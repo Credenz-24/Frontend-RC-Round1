@@ -1,0 +1,53 @@
+/* Custom container styles */
+/* body {
+    background-color: #d2d0e2; 
+} 
+
+.leaderboard-container {
+    background-color: #32e2ca;
+} 
+
+.react-data-table-component__pagination button svg {
+    fill: #00BCD4;
+} */
+
+/* .dataTable-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+*/
+/* .dataTable-header {
+    background-color: #f9fafb;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px;
+}
+
+.search-input {
+    margin: 16px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100%);
+} */
+
+/* Custom row styles */
+/* .dataTable-row {
+    &:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+} */
+
+/* Custom pagination styles */
+/* .dataTable-pagination {
+    background-color: #fafafa;
+    padding: 8px;
+} */
+
+/* Adjusting the cell padding */
+/* .react-data-table-component .rdt_TableCell {
+    padding: 8px 16px;
+} */
