@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 
-import pho1 from '../asset-img/download.jpeg';
-import pho2 from '../asset-img/download.jpeg';
-import Circles from '../shapes/Circles';
+import pho1 from './assets/download.jpeg';
+
+import Circles from './shapes/Circles';
 const Result = () => {
 
     const [per,setPer]= useState([
@@ -53,7 +53,7 @@ const Result = () => {
                     <div className='photol flex flex-col justify-center items-center gap-[-5px]'>
                     <h1 className='text-white text-[25px] font-semibold '>Rank</h1>
                     <h1 className='text-white text-[55px] font-semibold absolute top-[80px]'>#1</h1>
-                        <img src={pho2} className='h-[30vh] w-[30vh] ' ></img>
+                        <img src={pho1} className='h-[30vh] w-[30vh] ' ></img>
                         {/* <div className='px-[20px] py-[5px] text-[20px] bg-slate-400 rounded-lg'>Rank</div> */}
                     </div>
                 </div>
@@ -63,6 +63,7 @@ const Result = () => {
                     {per.map((percent) => {
                         return(
                             <Circles num={percent.percentage}/>
+                            // <Circles/>
                         );
                     })}
                     </div>

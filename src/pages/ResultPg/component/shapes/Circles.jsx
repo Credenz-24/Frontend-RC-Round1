@@ -29,7 +29,7 @@ const Circles = (props) => {
                 </div>
                 <svg className=" top-[0%] left-[0%] absolute" xmlns ="http://www.w3.org/2000/svg"version="1.1" width="22vh" height ="22vh">
 
-                    <circle style={circleStyles} className="" cx="80" cy="80" r="70" stroke-linecap="round"/>
+                    <circle style={circleStyles} className="" cx="80" cy="80" r="65" stroke-linecap="round"/>
 
                     </svg>
             </div>
