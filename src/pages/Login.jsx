@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 // import { useForm, SubmitHandler } from "react-hook-form"
 import "./Login.css";
 
 const Login = () => {
-
-  // const { register, handleSubmit } = useForm(); 
 
   const [showLabelUser, setShowLabelUser] = useState(false);
   const [showLabelPass, setShowLabelPass] = useState(false);
   const handleInputFocus1 = () => {
     //setShowUnderline(true); // Show the underline when input is focused
     setShowLabelUser(true);
-    document.getElementById("userInput").classList.add("animated-placeholder");
-    document.getElementById("userUnderline").classList.add("active");
+    // document.getElementById("userInput").classList.add("animated-placeholder");
+    // document.getElementById("userUnderline").classList.add("active");
   };
 
   const handleInputFocus2 = () => {
    // setShowUnderline(true); // Show the underline when input is focused
     setShowLabelPass(true);
-    document.getElementById("passInput").classList.add("animated-placeholder");
-    document.getElementById("passUnderline").classList.add("active");
+    // document.getElementById("passInput").classList.add("animated-placeholder");
+    // document.getElementById("passUnderline").classList.add("active");
   };
 
   const handleInputBlur1 = () => {
@@ -28,8 +27,8 @@ const Login = () => {
     if (userId === "") {
       setShowLabelUser(false);
     }
-    document.getElementById("userInput").classList.remove("animated-placeholder");
-    document.getElementById("userUnderline").classList.remove("active");
+  //   document.getElementById("userInput").classList.remove("animated-placeholder");
+  //   document.getElementById("userUnderline").classList.remove("active");
   };
 
   const handleInputBlur2 = () => {
@@ -38,8 +37,8 @@ const Login = () => {
     if (password === "") {
       setShowLabelPass(false);
     }
-    document.getElementById("passInput").classList.remove("animated-placeholder");
-    document.getElementById("passUnderline").classList.remove("active");
+    // document.getElementById("passInput").classList.remove("animated-placeholder");
+    // document.getElementById("passUnderline").classList.remove("active");
   };
 
   const createRipple = (event) => {
@@ -80,33 +79,46 @@ const Login = () => {
     console.log(event.target.value)
   };
 
-  const handleLogin = async (event) => {
+  // const handleLogin = (event) => {
+  //   event.preventDefault();
+  //   console.log({userId, password});
+  
+  //   const loginData = {
+  //     teamname: userId,
+  //     password: password,
+  //   };
+
+  //   axios.post('http://localhost:8000/api/login', loginData)
+  //   .then(
+  //     (res) => console.log(res)
+
+  //     document.cookie = `jwt=${res.data.jwt}`;
+  //   )
+  //   .catch((err) => console.log(err.response.data.detail))
+
+
+
+  // };
+  
+  const handleLogin = (event) => {
     event.preventDefault();
-    console.log({ loginType, userId, password });
-
+    console.log({ userId, password });
+  
     const loginData = {
-      username: username,
+      teamname: userId,
       password: password,
-      loginType: loginType,
     };
-
-    try {
-      const response = await axios.post('/api/login', loginData);
   
-      console.log(response.data);
-
-      localStorage.setItem('token', response.data.token);
-  
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('user', username);
-  
-      alert("Login successful!");
-    } catch (error) {
-      console.error("Login error:", error.response.data);
-      alert("Login failed: " + error.response.data.message);
-    }
+    axios.post('http://localhost:8000/api/login',loginData ,{ withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        // Assuming the token is in res.data.token
+        // Set a cookie that expires in 1 hour
+        // Redirect or update UI as necessary
+      })
+      .catch((err) => console.log(err.response ? err.response.data.detail : err.message));
   };
-
+  
 
 
   return (
@@ -135,13 +147,13 @@ const Login = () => {
       
     
 
-      <div className="mt-0 sm:mt-6 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0 md:w-[60%] sm:bottom-10 sm:flex sm:place-items-center sm:items-center justify-center sm:ml-12 md:ml-12 lg:ml-0">
+      <div className="mt-0 sm:mt-6 bg-black md:mt-5 lg:mt-5 xl:mt-0 2xl:mt-0 md:w-[60%] sm:bottom-10 sm:flex sm:place-items-center sm:items-center justify-center sm:ml-12 md:ml-12 lg:ml-0">
         {/* <EvervaultCard text="hover" handleLogin = {handleLogin}/> */}
         
         <form
           onSubmit={handleLogin}
           // className="mt-0 flex z-10 md:absolute sm:absolute md:w-[370px] sm:w-[340px] md:h-3/4 flex-col p-8 bg-opacity-60 rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl border border-gray-100 gradient-shadow"
-          className="mt-12 h-[500px] xl:mb-20 sm:mt-6 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0 flex z-10 md:w-[370px] sm:w-[340px] flex-col p-8 bg-opacity-60 rounded bg-clip-padding backdrop-filter backdrop-blur-xl border border-gray-100 gradient-shadow"
+          className="mt-12 h-[500px] xl:mb-20 sm:mt-6 md:mt-20 lg:mt-20 xl:mt-20 2xl:mt-20 flex z-10 md:w-[370px] sm:w-[340px] flex-col p-8 bg-opacity-60 rounded bg-clip-padding backdrop-filter backdrop-blur-xl border border-gray-100 gradient-shadow"
         >
         <div className="h-[80%] ">
           <h1 className="text-white justify-center text-center items-center text-4xl mb-3">
@@ -156,7 +168,7 @@ const Login = () => {
             {/* <label className="absolute mt-2 text-white">{loginType === "individual" ? "Username" : "Team ID"}</label> */}
             <input
               id="username"
-              className="flex border border-3 border-white pl-2 items-center bg-black text-gray-200 rounded placeholder-gray-400 py-2 placeholder:bg-black outline-none focus:border-white focus:border-b-4 h-10"
+              className="flex border border-3 border-white pl-2 items-center bg-black text-gray-200 rounded py-2 placeholder:bg-black outline-none focus:border-white focus:border-b-4 h-10"
               type="email"
               placeholder={showLabelUser ? "" : loginType === "individual" ? "Username" : "Team ID"}
               value={userId}
@@ -173,7 +185,7 @@ const Login = () => {
               {/* <label className="absolute mt-2 text-white">Password</label> */}
               <input
                 id="password"
-                className="rounded pl-2 border border-3 white placeholder-gray-400 py-2 bg-black text-gray-200 outline-none placeholder:bg-black focus:border-white focus:border-b-4 h-10"
+                className="rounded pl-2 border border-3 py-2 bg-black text-gray-200 outline-none placeholder:bg-black focus:border-white focus:border-b-4 h-10"
                 type="password"
                 placeholder={showLabelPass ? "" : "Password"}
                 value={password}
@@ -227,33 +239,6 @@ const Login = () => {
                 </label>
               </div>
             </div>
-
-        {/* <div className="main">
-        <input type="radio" name="checkbox" className="check" id="radio1" checked/>
-        <label for="radio1">
-          <div className="container">
-            <div className="cRadioBtn">
-              <div className="overlay"></div>
-              <div className="drops xsDrop"></div>
-              <div className="drops mdDrop"></div>
-              <div className="drops lgDrop"></div>
-            </div>
-          </div>
-          <h2>Party</h2>
-        </label>
-        <input type="radio" name="checkbox" className="check" id="radio2" />
-        <label for="radio2">
-          <div className="container">
-            <div className="cRadioBtn">
-              <div className="overlay"></div>
-              <div className="drops xsDrop"></div>
-              <div className="drops mdDrop"></div>
-              <div className="drops lgDrop"></div>
-            </div>
-          </div>
-          <h2>No Party</h2>
-        </label>
-        </div> */}
 
           </div>
           </div>
