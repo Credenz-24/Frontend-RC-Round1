@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import pho1 from './assests/download.jpeg';
-import pho2 from './assests/download.jpeg';
+import pho1 from './assets/download.jpeg';
+import pho2 from './assets/download.jpeg';
 import Circles from '../shapes/Circles';
 const Home = () => {
     const [per,setPer] = useState([]);
@@ -108,7 +108,7 @@ const Home = () => {
                     <div className='flex flex-col h-full w-[40%] justify-center items-center gap-2 '>
                         <div className='circle flex flex-row justify-around item-center  gap-10'>
                                 {/* <Circles num={(per.user_accuracy).toFixed(2)}/> */}
-                                <Circles num={(per.user_accuracy).toFixed(2)}/>
+                                {/* <Circles num={(per.user_accuracy).toFixed(2)}/> */}
 
                         </div>
                     
