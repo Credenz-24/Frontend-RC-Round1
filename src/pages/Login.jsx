@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 // import { useForm, SubmitHandler } from "react-hook-form"
 import "./Login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const [showLabelUser, setShowLabelUser] = useState(false);
   const [showLabelPass, setShowLabelPass] = useState(false);
@@ -109,12 +112,12 @@ const Login = () => {
       password: password,
     };
   
-    axios.post('http://localhost:8000/api/login',loginData ,{ withCredentials: true })
+    axios.post('http://localhost:8000/api/login',loginData )
       .then((res) => {
         console.log(res);
-        // Assuming the token is in res.data.token
-        // Set a cookie that expires in 1 hour
-        // Redirect or update UI as necessary
+        localStorage.setItem('jwt', res.data.jwt);
+
+        navigate('/instruction');
       })
       .catch((err) => console.log(err.response ? err.response.data.detail : err.message));
   };
@@ -126,7 +129,7 @@ const Login = () => {
     
     <div
       // className="h-screen items-center flex md:flex-row sm:flex-col text-center flex-col bg-black"
-      className="items-center h-[100vh] flex md:flex-row sm:flex-col text-center flex-col bg-black"
+      className="items-center h-[100vh] flex md:flex-row sm:flex-col text-center flex-col bg-white"
 
       onClick={createRipple}
       

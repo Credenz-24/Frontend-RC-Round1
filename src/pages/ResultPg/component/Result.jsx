@@ -1,87 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+// Assuming pho1 and pho2 are not used since they're not referenced in the component rendering
+// import pho1 from './assets/download.jpeg';
+// import pho2 from './assets/download.jpeg';
+// Assuming Circles is not used since it's not referenced in the component rendering
+// import Circles from '../component/shapes/Circles';
 
+const Home = () => {
+    const [per, setPer] = useState({});
+    const [isError, setIsError] = useState('');
 
-import pho1 from './assets/download.jpeg';
+    useEffect(() => {
+        const getMyPostData = async () => {
+            try {
+                const res = await axios.get("http://127.0.0.1:8000/api/result", {
+                    headers: {
+                        "Authorization": localStorage.getItem('jwt')
+                    }
+                });
+                console.log("Response", res);
+                setPer(res.data);
+            } catch (error) {
+                setIsError(error.message);
+            }
+        };
 
-import Circles from './shapes/Circles';
-const Result = () => {
+        getMyPostData();
+    }, []);
 
-    const [per,setPer]= useState([
-        {
-            "id":1,
-            "percentage" : 65,
-        },
-        {
-            "id":2,
-            "percentage" : 20,
+    // useEffect(() => {
+    //     console.log(per);
+    // }, [per]);
 
-        },
-        {
-            "id":3,
-            "percentage" : 30,
+    if (isError) {
+        return <p className="text-red-500 text-center mt-5">{isError}</p>;
+    }
 
-        }
-    ])
-
-    
-    return( 
-        <>
-        
-        <div className='main h-[86vh] w-full flex flex-col justify-center items-center '>
-        <div className='container flex flex-wrap items-center justify-center h-[100%] bg-black w-full gap-16'>
-        <div className='leftbox w-72 h-[70vh] rounded-3xl flex flex-col justify-between items-center  z-[100] backdrop-blur-[20px] border-2 border-white px-[10px] py-[20px]'>
-                <div className='left-top flex flex-col justify-start items-center gap-[20px]'>
-                    <div className='profile bg-slate-400 h-[18vh] w-[18vh] rounded-full'></div>
-                    <h1 className='names text-[26px] text-white font-semibold'>Username</h1>
-                    <h1 className='teamName text-white text-[20px] '>Teamname</h1>
-                </div>
-                <div className='left-bottom flex flex-col justify-center items-center gap-[20px]'>
-                    <h1 className='feedback  text-white text-[18px] '>Please share your feedback!</h1>
-                    <button className='bg-blue-800 text-[20px] hover:bg-blue-500 text-white py-2 px-4 rounded-full'>Feedback</button>
-                
-                </div>
-            
-            </div>
-            <div className='rightbox flex w-[100vh] h-[70vh] rounded-[30px] backdrop-blur-[20px] border-2 border-white  justify-center items-start z-[100]'>
-                <div className='jellyfish z-5 h-[40vh] w-[100%] rounded-[30px]  bg-transparent flex justify-around items-center absolute'>
-                    <div className='photol flex flex-col justify-center items-center gap-[-5px]'>
-                        <h1 className='text-white text-[25px] font-semibold'>Score</h1>
-                        <h1 className='text-white text-[55px] font-semibold absolute top-[80px]'>99</h1>
-                        <img src={pho1} className='h-[30vh] w-[30vh]' ></img>
-                        {/* <div className='px-[20px] py-[5px] text-[20px] bg-slate-400 rounded-lg'>Score</div> */}
-                    </div>
-                    <div className='photol flex flex-col justify-center items-center gap-[-5px]'>
-                    <h1 className='text-white text-[25px] font-semibold '>Rank</h1>
-                    <h1 className='text-white text-[55px] font-semibold absolute top-[80px]'>#1</h1>
-                        <img src={pho1} className='h-[30vh] w-[30vh] ' ></img>
-                        {/* <div className='px-[20px] py-[5px] text-[20px] bg-slate-400 rounded-lg'>Rank</div> */}
-                    </div>
-                </div>
-                <div className='circlesmain my-72 h-[25vh] w-[80vh] flex flex-col justify-around items-center gap-3'>
-                    
-                   <div className='circle flex flex-row justify-around item-center  gap-10'>
-                    {per.map((percent) => {
-                        return(
-                            <Circles num={percent.percentage}/>
-                            // <Circles/>
-                        );
-                    })}
-                    </div>
-                <div className='written text-white flex flex-row  justify-around item-center gap-24  font-semibold text-[18px]'>
-                    <h3>Lifelines</h3>
-                    <h3>Correct questions</h3>
-                    <h3>Accuracy</h3>
-                    </div>   
-                 
-                </div>
-               
-            </div>
+    return (
+        <div className="max-w-4xl mx-auto p-5">
+    <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Submissions Summary</h1>
+    <div className="bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg shadow-indigo-500/50 rounded-lg p-8">
+        <p className="text-lg text-white mb-4">
+            <span className="font-semibold">Team name:</span> <span className="font-light">{per.teamname}</span>
+        </p>
+        <div className="bg-white bg-opacity-10 p-4 rounded-lg mb-4">
+            <p className="text-md text-white">Rank: <span className="font-normal">{per.rank}</span></p>
         </div>
-
+        <div className="bg-white bg-opacity-10 p-4 rounded-lg">
+            <p className="text-md text-white">Score: <span className="font-normal">{per.score}</span></p>
+        </div>
+        <div className="bg-white bg-opacity-10 p-4 rounded-lg mb-4">
+            <p className="text-md text-white">Correct Submissions: <span className="font-normal">{per.correct_submission}</span></p>
+        </div>
+        <div className="bg-white bg-opacity-10 p-4 rounded-lg mb-4">
+            <p className="text-md text-white">Incorrect Submissions: <span className="font-normal">{per.incorrect_submission}</span></p>
+        </div>
+        <div className="bg-white bg-opacity-10 p-4 rounded-lg mb-4">
+            <p className="text-md text-white">Questions Attempted: <span className="font-normal">{per.question_attempted}</span></p>
         </div>
         
-        </>
-    )
-}
+    </div>
+</div>
+    );
+};
 
-export default Result;
+export default Home;

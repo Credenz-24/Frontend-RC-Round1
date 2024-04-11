@@ -9,13 +9,12 @@ import Result from './pages/ResultPg/component/Result';
 import OurTeam from './pages/OurTeam';
 import Navbar from './components/Navbar';
 
-
 const router = createBrowserRouter(
   createRoutesFromElements(
       <>
       <Route path="/" element={<Login />} />
       <Route path="instruction" element={<Instruction/>} />
-      <Route path="question" element={<QuestionMcq/>} />
+      <Route path="mcq" element={<QuestionMcq/>} />
       <Route path="leaderboard" element={<Leaderboard/>} />
       <Route path="result" element={<Result/>} />
       <Route path="Ourteam" element={<OurTeam/>} />
