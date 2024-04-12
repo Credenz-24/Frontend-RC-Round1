@@ -18,7 +18,9 @@ function Lifeline() {
             headers: {"Authorization": localStorage.getItem('jwt')}
           })
             .then(response => {
-              console.log(response.data);
+              if(selectedEndpoint != "poll")
+              {location.reload()}
+              console.log("Response ",response.data);
       
             })
             .catch(error => {

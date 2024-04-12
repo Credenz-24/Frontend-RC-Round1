@@ -15,12 +15,14 @@ const  QuestionMcq = () => {
   const [sec, setSec] = useState(0);
   const [min, setMin] = useState(0);
   const [prevans, setPrevans] = useState(0);
+  const [lifelineFlag, setLifeLineFlag] = useState(1);
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/get_question`, {
       headers: {"Authorization": localStorage.getItem('jwt')}
     })
     .then(res => {
+      setLifeLineFlag(res.data['lifeline_flag'])
       setScore(res.data['score']);
       setAttempts(res.data['attempts']);
       setQuestion(res.data['question']);
@@ -88,8 +90,8 @@ const  QuestionMcq = () => {
             setVal(e.target.value);
           }}
         />
-      </div>
-      <Time time = {[hrs,min,sec]}/>
+      </div>      
+      <Time time = {[hrs,min,sec]} lifelineFlag={lifelineFlag}/>
       <div className="[grid-area:3_/_4_/_4_/_5] grid grid-cols-[2fr_1fr_1fr_1fr] grid-rows-[1fr_1fr] gap-x-[2px] gap-y-[2px] border-2 rounded-lg p-0.5 divide-y-2 divide-solid">
         <div className="[grid-area:1_/_1_/_2_/_3] text-center flex items-center justify-center">
           <p>Score</p>
