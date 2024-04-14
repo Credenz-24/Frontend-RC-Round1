@@ -1,240 +1,102 @@
-.ripple-container {
-  position: relative; /* This is crucial */
-  overflow: hidden;   /* Prevents ripple from being visible outside this container */
-  /* Other styles as needed */
+.login-background {
+  height: 100vh; /* Full height of the viewport */
+  background-image: url('../images/bgimage.png'); /* Adjust path as needed */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  transform: scale(0);
-  animation: ripple-animation 2000ms linear;
-  background-color: rgba(50, 103, 209, 0.644);
+.login-layout {
+  display: flex;
+  align-items: center; /* Align vertically */
+  justify-content: center; /* Center horizontally */
+  width: 80%; /* Adjust based on preference */
 }
 
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
+.logo-container {
+  display: flex;
+  justify-content: flex-start; /* Align logo to the left */
+  margin-right: 350px; /* Smaller margin to reduce distance */
+  max-width: 30%; /* Adjust based on preference */
 }
 
-.radio-buttons {
+.rc-logo {
+  max-width: 100%; /* Make sure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.login-container {
+  flex: 1; /* Take up remaining space */
+  background-color: rgba(21, 29, 39, 0.8); /* Set background color with 60% opacity */
+  padding: 20px; /* Reduce padding */
+  border-radius: 20px; /* Set border radius */
+  border: 1px solid #00B0B0; /* Set border color */
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Adjust the space between radio buttons as needed */
-  padding-left: 12px; /* Adjust based on your design */
-  padding-top: 20px; /* Adjust based on your design */
+  align-items: center; /* Align form items */
+  width: 100%; /* Set width to 100% of available space */
+  max-width: 320px; /* Set max-width to ensure it doesn't exceed a certain size */
+  height: 400px; /* Set height to 400 pixels */
 }
 
-.radio-buttons label {
-  color: white; /* Adjust label color as needed */
-  cursor: pointer;
+.title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.checkbox:checked {
+.login-form {
+  width: 100%; /* Full width of the container */
+}
+
+.login-title {
+  color: #fff; /* Red text color */
+  font-weight: 600; /* Semibold font-weight */
+  font-size: 34px; /* Increase font size */
+  margin-bottom: 50px; /* Add spacing below the title */
+  text-align: center;
+}
+
+.login-input {
+  padding: 10px 25px; /* Add padding of 10px on top and bottom, and 15px on left and right */
+  margin-bottom: 30px; /* Add equal spacing between input fields */
+  border: none; /* Remove the border */
+  border-bottom: 2px solid #fff; /* Set only bottom border */
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1); /* Set background color with reduced opacity */
+  width: 100%; /* Full width of the form */
+  outline: none;
+  transition: border-color 0.63s ease; /* Add transition effect on border-color */
+}
+
+.login-button {
+  padding: 10px;
+  margin-top: 20px; /* Add equal spacing above the button */
   border: none;
-}
-
-.checkbox:checked + .check-icon {
-  display: flex;
-}
-
-.gradient-shadow {
-  box-shadow:
-      0 0 5px rgba(96, 108, 218, 0.2),
-      0 0 10px rgba(255, 255, 255, 0.2),
-      0 0 25px rgba(255, 255, 255, 0.2),
-      0 0 30px rgba(255, 255, 255, 0.2),
-      0 0 35px rgba(255, 255, 255, 0.2),
-      0 0 40px rgba(255, 255, 255, 0.2);
-  background-clip: padding-box; /* Avoids shadows being inside the border */
-}
-
-/* Add these styles to your Login.css file */
-
-/* Style for the underline */
-.underline {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 100%;
-  background-color: white;
-  transform-origin: bottom right;
-  transform: scaleX(0);
-  transition: transform 1s ease;
-}
-
-/* Animation for the underline when it should be visible */
-.underline.active {
-  transform: scaleX(1);
-}
-
-/* Keyframes for the placeholder animation */
-@keyframes placeholderAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animated-placeholder {
-  animation: placeholderAnimation 1s ease;
-}
-
-
-/* .wavy-btn {
-  background: linear-gradient(90deg, #007bff, #0069d9, #0056b3, #004184, #002855, #00142a);
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  color: #fff; /* Red text color */
+  font-weight: 600; /* Semibold font-weight */
+  background-color: #19B4B6; /* Background color */
   cursor: pointer;
-}
-
-.wavy-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.2) 50%, transparent 80%);
-  background-size: 300% 300%;
   border-radius: 10px;
-  animation: none;
+  font-size: 16px;
+  width: 100%; /* Full width of the button */
 }
 
-.wavy-btn:hover::before {
-  animation: wave-animation 2s infinite;
+/* Adjust the opacity of the placeholder text */
+.login-input::placeholder {
+  color: #878787; /* Set text color with 60% opacity */
+  border-radius: 20px;
+  /* background-color: rgba(255, 255, 255); /* White background color with reduced opacity */} */
+
+/* Add hover effect on placeholder */
+.login-input:focus::placeholder {
+  transform: translateY(-20px); /* Move placeholder up */
 }
 
-@keyframes wave-animation {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-} */
-
-.wavy-btn {
-  background: linear-gradient(90deg, #007bff, #0069d9, #0056b3, #004184, #002855, #00142a);
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  cursor: pointer;
-  transition: transform 0.5s ease; /* Add transition */
+/* Add hover effect on border-bottom */
+.login-input:focus {
+  border-bottom-color: #19B4B6; /* Change border color on focus */
+  outline: none;
 }
-
-.wavy-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.2) 50%, transparent 80%);
-  background-size: 300% 300%;
-  border-radius: 10px;
-  animation: none;
-}
-
-.wavy-btn.clicked {
-  transform: scale(0); /* Hide the button upon click */
-}
-
-.wavy-btn:hover::before {
-  animation: wave-animation 2s infinite;
-}
-
-@keyframes wave-animation {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-}
-
-.animated-placeholder {
-  animation: wavyPlaceholder 1s ease infinite;
-  background: linear-gradient(to right, #999 20%, #fff 40%, #999 60%);
-  background-size: 200% 100%;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .mainBox{
-  height: ;
-} */
-/* .ripple-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-  }
-  
-  .ripple {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple-effect 1s linear;
-    pointer-events: none;
-  }
-  
-  @keyframes ripple-effect {
-    to {
-      transform: scale(4);
-      opacity: 0;
-    }
-  }
-   */
