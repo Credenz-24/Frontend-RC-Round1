@@ -29,6 +29,6 @@ body{
   /* background-color: #000; */
   font-family: "Poppins", sans-serif;
   /* background: rgb(35,34,48); */
-  background: linear-gradient(0deg, rgb(0, 34, 43) 50%, #007976 100%);
+  background: linear-gradient(0deg, rgb(0, 34, 43) 83%, #007976 100%);
   user-select: none;
 }
