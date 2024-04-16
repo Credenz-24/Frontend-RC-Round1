@@ -7,7 +7,7 @@ const Circles = (props) => {
 
     const circleStyles = {
         "fill": "none",
-        "stroke": "#042AA7",
+        "stroke": "#038c88",
         "strokeWidth": "20px",
         "strokeDasharray": "400",
         "strokeDashoffset": sodf,
@@ -19,7 +19,7 @@ const Circles = (props) => {
         <>
             <div className="skills h-[22vh] w-[22vh] relative  flex justify-center items-center ">
                 <div className='outercircle1 h-[22vh] w-[22vh] rounded-full border-2 border-[white] border-solid  flex justify-center items-center p-[20px] '>
-                    <div className='innercircle h-[16vh] w-[16vh] bg-slate-950 rounded-full border-2 border-[white] border-solid flex justify-center items-center'>
+                    <div className='innercircle h-[16vh] w-[16vh]  rounded-full border-2 border-[white] border-solid flex justify-center items-center'>
                         <div className = "number font-[600] text-white ">
                             {num}%    
                         </div>  
@@ -29,7 +29,7 @@ const Circles = (props) => {
                 </div>
                 <svg className=" top-[0%] left-[0%] absolute" xmlns ="http://www.w3.org/2000/svg"version="1.1" width="22vh" height ="22vh">
 
-                    <circle style={circleStyles} className="" cx="80" cy="80" r="65" stroke-linecap="round"/>
+                    <circle style={circleStyles} className="" cx="76" cy="77" r="65" stroke-linecap="round"/>
 
                     </svg>
             </div>

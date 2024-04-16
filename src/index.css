@@ -6,6 +6,11 @@
 body {
   @apply leading-[normal] m-0;
 }
+
+@font-face {
+  font-family: 'Azonix';
+  src: url('./fonts/azonix.ttf') format('truetype');
+}
 *,
 ::before,
 ::after {
@@ -24,6 +29,6 @@ body{
   /* background-color: #000; */
   font-family: "Poppins", sans-serif;
   /* background: rgb(35,34,48); */
-  background: linear-gradient(0deg, rgb(0, 34, 43) 50%, rgb(0, 121, 118) 100%);
+  background: linear-gradient(0deg, rgb(0, 34, 43) 50%, #007976 100%);
   user-select: none;
 }
