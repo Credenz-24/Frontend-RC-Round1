@@ -65,11 +65,11 @@ const Time = (props) => {
   }
 
   return (
-    <div className="[grid-area:1_/_4_/_3_/_5] flex border-2 rounded-lg p-0.5 divide-x-2 divide-dashed">
-      <div className="flex-1 flex items-center justify-center">
+    <div className="flex h-12 border-2 border-[#00B0B0] rounded-lg">
+      {/* <div className="flex-1 text-white flex items-center justify-center">
         <p>Time</p>
-      </div>
-      <div className="flex-1 flex items-center justify-center">
+      </div> */}
+      <div className="flex-1 text-white flex items-center justify-center">
         {`${time.hrs < 10 ? "0" : ""}${time.hrs} : ${time.min < 10 ? "0" : ""}${time.min} : ${time.sec < 10 ? "0" : ""}${time.sec}`}
       </div>
     </div>
