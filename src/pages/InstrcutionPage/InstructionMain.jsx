@@ -36,7 +36,7 @@ const InstructionMain = (props) => {
   const handleProceedClick = () => {
     if (acceptedConditions) {
       console.log("Proceeding...");
-      navigate("/result");
+      navigate("/mcq");
     } else {
       console.log("Please accept the conditions.");
     }

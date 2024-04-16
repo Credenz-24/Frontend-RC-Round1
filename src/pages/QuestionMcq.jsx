@@ -16,6 +16,10 @@ const  QuestionMcq = () => {
   const [min, setMin] = useState(0);
   const [prevans, setPrevans] = useState(0);
   const [lifelineFlag, setLifeLineFlag] = useState(1);
+  const [lifeline1,setLF1] = useState(false);
+  const [lifeline2,setLF2] = useState(false);
+  const [lifeline3,setLF3] = useState(false);
+
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/get_question`, {
@@ -31,6 +35,9 @@ const  QuestionMcq = () => {
       setSec(res.data['seconds']);
       setMin(res.data['minutes']);
       setPrevans(res.data['prev_ans']);
+      setLF1(res.data['lifeline1']);
+      setLF2(res.data['lifeline2']);
+      setLF3(res.data['lifeline3']);
     });
   }, []);
 
@@ -120,7 +127,7 @@ const  QuestionMcq = () => {
      </div> 
      </>)}
       </div>
-      <Lifeline />
+      <Lifeline lifeline1={lifeline1} lifeline2={lifeline2} lifeline3={lifeline3} />
       <div className="[grid-area:6_/_1_/_7_/_4] content-around text-center">
         <button
           type="submit"

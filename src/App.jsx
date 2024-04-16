@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import Login from './pages/Login';
-import Instruction from './pages/Instruction/Instruction';
+// import Instruction from './pages/Instruction/Instruction';
 import QuestionMcq from './pages/QuestionMcq';
 import Leaderboard from './pages/Leaderboard';
 import Result from './pages/ResultPg/component/Result';
