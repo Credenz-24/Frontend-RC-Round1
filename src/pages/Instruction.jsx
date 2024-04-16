@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useNavigate } from 'react-router-dom';
 import PropTypes from "prop-types";
+import Navbar from './components/Navbar';
 // import axios from "../../../axios/axios";
 
 function Carousel(props) {
@@ -235,6 +236,8 @@ function Carousel(props) {
   </button>);
 
   return (
+    <>
+    <Navbar/>
     <div className="flex flex-col gap-3">
       <div
         className="react-3d-carousel relative "
@@ -290,6 +293,8 @@ function Carousel(props) {
 </div>
 
     </div>
+    </div>
+    </>
   );
 }
 

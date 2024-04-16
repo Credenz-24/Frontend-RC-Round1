@@ -8,12 +8,13 @@ import Leaderboard from './pages/Leaderboard';
 import Result from './pages/ResultPg/component/Result';
 import OurTeam from './pages/OurTeam';
 import Navbar from './components/Navbar';
+import InstructionMain from './pages/InstrcutionPage/InstructionMain';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
       <>
       <Route path="/" element={<Login />} />
-      <Route path="instruction" element={<Instruction/>} />
+      <Route path="instruction" element={<InstructionMain/>} />
       <Route path="mcq" element={<QuestionMcq/>} />
       <Route path="leaderboard" element={<Leaderboard/>} />
       <Route path="result" element={<Result/>} />
@@ -27,12 +28,28 @@ const router = createBrowserRouter(
 )
 
 function App({routes}) {
+  let path = router;
+  const login = () => path==="/";
 
   return (
+    // <UserContextProvider>
     <>
-      <Navbar />
-      <RouterProvider router={router}/>
+      <div className='main '>
+      {/* <Navbar></Navbar>
+      <RouterProvider router={router}/> */}
+      {router==<Login/> ? (
+          <>
+            <RouterProvider router={router}/>
+          </>
+      ):(
+        <>
+        <Navbar></Navbar>
+        <RouterProvider router={router}/>
+        </>
+      )}
+      </div>
     </>
+    // </UserContextProvider>
   );
 }
 
