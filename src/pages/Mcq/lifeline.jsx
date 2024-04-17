@@ -77,19 +77,43 @@ function Lifeline(props) {
 
   return (
     <>
-      <div className="text-center mt-10 border-2 border-[#00B0B0] flex flex-col rounded-lg divide-y-2 ">
-        <button className={`text-white py-2 mt-2 mb-2 ${lifeline1 ? 'bg-red-200' : 'bg-green-200'}`} onClick={() => handleLifelineClick("aqua_point", "Lifeline 1")} disabled={lifeline1}>
-          <img src={aquapointIcon} alt="Aquapoint" className="w-8 h-8 inline-block mr-2" />
-          <span className={lifeline1 ? 'text-red-600' : 'text-green-800'}>Lifeline 1</span>
-        </button>
-        <button className={`text-white py-2 mt-2 mb-2 ${lifeline2 ? 'bg-red-200' : 'bg-green-200'}`} onClick={() => handleLifelineClick("time_freeze", "Lifeline 2")} disabled={lifeline2}>
-          <img src={timefreezeIcon} alt="Time Freeze" className="w-8 h-8 inline-block mr-2" />
-          <span className={lifeline2 ? 'text-red-600' : 'text-green-800'}>Lifeline 2</span>
-        </button>
-        <button className={`text-white py-2 mt-2 mb-2 ${lifelineFlag==4 ? 'bg-green-200' : (lifeline3 &&'bg-red-200') || (!lifeline3 && 'bg-green-200')}`} onClick={() => handleLifelineClick("poll", "Lifeline 3")} disabled={lifelineFlag == 4 ? false : lifeline3}>
-          <img src={pollIcon} alt="Poll" className="w-8 h-8 inline-block mr-2" />
-          <span className={lifelineFlag==4 ? 'text-green-800' : (lifeline3 &&'text-red-600') || (!lifeline3 && 'text-green-800')}>Lifeline 3</span>
-        </button>
+      <div className="text-center mt-10 border-2 border-[#00B0B0]  flex flex-col rounded-lg divide-y-2 ">
+      <button
+    className={`text-white py-2 px-4 pl-2 mt-2 mb-2 ml-12 mr-12  ${
+      lifeline1 ? "bg-red-200" : "bg-green-200"
+    } rounded-lg focus:outline-none hover:bg-opacity-80`}
+    onClick={() => handleLifelineClick("aqua_point", "Lifeline 1")}
+    disabled={lifeline1}
+  >
+    <img src={aquapointIcon} alt="Aquapoint" className="w-8 h-8 inline-block mr-2" />
+    <span className={lifeline1 ? "text-red-600" : "text-green-800"}>Lifeline 1</span>
+  </button>
+  <button
+    className={`text-white py-2 px-4 pl-2 mt-2 mb-2 ml-12 mr-12 ${
+      lifeline2 ? "bg-red-200" : "bg-green-200"
+    } rounded-lg focus:outline-none hover:bg-opacity-80`}
+    onClick={() => handleLifelineClick("time_freeze", "Lifeline 2")}
+    disabled={lifeline2}
+  >
+    <img src={timefreezeIcon} alt="Time Freeze" className="w-8 h-8 inline-block mr-2" />
+    <span className={lifeline2 ? "text-red-600" : "text-green-800"}>Lifeline 2</span>
+  </button>
+  <button
+    className={`text-white py-2 px-4 pl-2 mt-2 mb-2 ml-12 mr-12  ${
+      lifelineFlag === 4 ? "bg-green-200" : lifeline3 ? "bg-red-200" : "bg-green-200"
+    } rounded-lg focus:outline-none hover:bg-opacity-80`}
+    onClick={() => handleLifelineClick("poll", "Lifeline 3")}
+    disabled={lifelineFlag === 4 ? false : lifeline3}
+  >
+    <img src={pollIcon} alt="Poll" className="w-8 h-8 inline-block mr-2" />
+    <span
+      className={
+        lifelineFlag === 4 ? "text-green-800" : lifeline3 ? "text-red-600" : "text-green-800"
+      }
+    >
+      Lifeline 3
+    </span>
+  </button>
       </div>
 
       {isPoll &&

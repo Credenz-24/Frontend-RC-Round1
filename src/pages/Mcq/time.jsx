@@ -85,12 +85,16 @@ const Time = (props) => {
   }
 
   return (
-    <div className="flex bg-[#0B121B] h-12 border-2 border-[#00B0B0] rounded-lg [grid-area:1_/_3_/_2_/_4] mr-20">
+    <div className="flex justify-center bg-[#0B121B] h-12 border-2 border-[#00B0B0] rounded-lg flex-nowrap items-center [grid-area:1_/_3_/_2_/_4] mr-20">
       {/* <div className="flex-1 text-white flex items-center justify-center">
         <p>Time</p>
       </div> */}
-      <div className="flex-1 text-white flex items-center justify-center">
-        {`${time.hrs < 10 ? "0" : ""}${time.hrs} : ${time.min < 10 ? "0" : ""}${time.min} : ${time.sec < 10 ? "0" : ""}${time.sec}`}
+      <div className="text-white flex items-center justify-center">
+        <span className="mr-1">{`${time.hrs < 10 ? "0" : ""}${time.hrs}`}</span>
+        <span className="mr-1">:</span>
+        <span className="mr-1">{`${time.min < 10 ? "0" : ""}${time.min}`}</span>
+        <span className="mr-1">:</span>
+        <span>{`${time.sec < 10 ? "0" : ""}${time.sec}`}</span>
       </div>
     </div>
   );
