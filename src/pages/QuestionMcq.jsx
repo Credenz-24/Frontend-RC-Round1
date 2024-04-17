@@ -84,6 +84,8 @@ const  QuestionMcq = () => {
     <div className="flex-row grid grid-cols-[1fr_0.7fr_1fr_1fr] grid-rows-[0.2fr_0.3fr_0.4fr_1.3fr_0.5fr_0.3fr] gap-x-[20px] gap-y-[10px] w-[95vw] h-[85vh] mx-6">
           <div className="[grid-area:1_/_1_/_2_/_2] bg-[#0B121B] h-12 text-white border-2 border-[#00B0B0] text-center flex items-center justify-center rounded-lg gap-y-0">
       <p>Question {queno}</p>
+        
+      
     </div>
     <div className="[grid-area:2_/_1_/_5_/_4] bg-[#0B121B] text-white border-2 border-[#00B0B0] text-center rounded-lg mr-20 overflow-auto" style={{ height: "100%", alignSelf: "flex-start" }}>      
     <div className=" text-left text-xl pt-2 pl-4">
@@ -110,9 +112,9 @@ const  QuestionMcq = () => {
         type="number"
         id="response 1"
         className="appearance-none bg-[#0B121B] text-white border text-sm rounded-lg block w-full p-2.5"
-        placeholder="Response 1"
+        placeholder={lifelineFlag === 2 ? "Cannot Repond" : "Response 1"}
         disabled
-        value={prevans}
+        value={lifelineFlag != 2 ? prevans : null}
       />
     </div>
   )

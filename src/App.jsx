@@ -9,6 +9,7 @@ import Result from './pages/ResultPg/component/Result';
 import OurTeam from './pages/OurTeam';
 import Navbar from './components/Navbar';
 import InstructionMain from './pages/InstrcutionPage/InstructionMain';
+import TabSwitchDetector from './pages/TabSwitchDetector';
 
 // const router = createBrowserRouter(
 //   createRoutesFromElements(
@@ -80,6 +81,7 @@ function App() {
 
       
       </Routes>
+      <TabSwitchDetector />
       </div>
 
       
