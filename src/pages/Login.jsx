@@ -274,6 +274,8 @@
 
 import React, { useState } from "react";
 import axios from 'axios';
+import { toast } from "react-toastify";
+
 import { useNavigate } from 'react-router-dom';
 import bgimage from '../images/bgimage.png'; // ensure the path is correct
 import rclogo from '../images/rclogo 3.png'; // ensure the path is correct
@@ -291,6 +293,8 @@ const Login = () => {
       .then(res => {
         localStorage.setItem('jwt', res.data.jwt);
         navigate('/instruction');
+        toast.success("Logged In!")
+        location.reload();
       })
       .catch(err => {
         console.error(err.response ? err.response.data.detail : err.message);

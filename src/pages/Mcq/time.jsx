@@ -1,13 +1,33 @@
 
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Time = (props) => {
+
+  const navigate = useNavigate();
+
   const [lifelineFlag, setLifelineFlag] = useState(props.lifelineFlag);
   const [time, setTime] = useState({
     hrs: props.time[0],
     min: props.time[1],
     sec: props.time[2],
   });
+
+  // useEffect(() => {
+  //   setTime({
+  //     hrs: props.time[0],
+  //     min: props.time[1],
+  //     sec: props.time[2],
+  //   });
+  //   setLifelineFlag(props.lifelineFlag);
+  // }, [props.time, props.lifelineFlag]);
+
+  // useEffect(() => {
+  //   const intervalId = lifelineFlag === 3 ? setInterval(fetchData, 1000) : setInterval(updateTimer, 1000);
+
+  //   return () => clearInterval(intervalId);
+  // }, [lifelineFlag]);
 
   useEffect(() => {
     setTime({
@@ -16,13 +36,11 @@ const Time = (props) => {
       sec: props.time[2],
     });
     setLifelineFlag(props.lifelineFlag);
-  }, [props.time, props.lifelineFlag]);
 
-  useEffect(() => {
-    const intervalId = lifelineFlag === 3 ? setInterval(fetchData, 1000) : setInterval(updateTimer, 1000);
+    const intervalId = props.lifelineFlag === 3 ? setInterval(fetchData, 1000) : setInterval(updateTimer, 1000);
 
     return () => clearInterval(intervalId);
-  }, [lifelineFlag]);
+}, [props.time, props.lifelineFlag]);
 
   function updateTimer() {
     setTime(prevTime => {
@@ -38,7 +56,9 @@ const Time = (props) => {
         min = 59;
         sec = 59;
       } else {
-        // Handle timer expiration here
+        navigate('/result');
+        toast.info("Time Over!")
+
       }
 
       return { hrs, min, sec };
@@ -65,7 +85,7 @@ const Time = (props) => {
   }
 
   return (
-    <div className="flex h-12 border-2 border-[#00B0B0] rounded-lg">
+    <div className="flex bg-[#0B121B] h-12 border-2 border-[#00B0B0] rounded-lg [grid-area:1_/_3_/_2_/_4] mr-20">
       {/* <div className="flex-1 text-white flex items-center justify-center">
         <p>Time</p>
       </div> */}

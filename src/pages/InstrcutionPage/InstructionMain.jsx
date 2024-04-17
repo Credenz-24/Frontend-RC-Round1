@@ -12,6 +12,9 @@ const InstructionMain = (props) => {
 
   const [pop, setPop] = useState(false);
 
+
+
+
   const LifelineArray = [
     {
       id: 1,
@@ -34,6 +37,8 @@ const InstructionMain = (props) => {
   ];
 
   const handleProceedClick = () => {
+    
+
     if (acceptedConditions) {
       console.log("Proceeding...");
       navigate("/mcq");

@@ -1,3 +1,5 @@
+/* Login.css */
+
 .login-background {
   height: 100vh; /* Full height of the viewport */
   background-image: url('../images/bgimage.png'); /* Adjust path as needed */
@@ -88,7 +90,7 @@
 .login-input::placeholder {
   color: #878787; /* Set text color with 60% opacity */
   border-radius: 20px;
-  /* background-color: rgba(255, 255, 255); /* White background color with reduced opacity */} */
+}
 
 /* Add hover effect on placeholder */
 .login-input:focus::placeholder {
@@ -99,4 +101,31 @@
 .login-input:focus {
   border-bottom-color: #19B4B6; /* Change border color on focus */
   outline: none;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+  .login-layout {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; 
+  }
+
+  .logo-container {
+    margin-right: 0; /* Remove margin on small screens */
+    margin-bottom: 60px; /* Add some space between logo and form */
+  }
+
+  .login-container {
+    height: 500px; /* Increase height for small screens */
+    margin-bottom: 150px; /* Add space between form and background */
+  }
+
+  .login-title {
+    font-size: 28px; /* Decrease font size for smaller screens */
+    margin-bottom: 30px; /* Increase spacing below the title */
+  }
+
+  .login-input {
+    margin-bottom: 20px; /* Decrease spacing between input fields */
+  }
 }

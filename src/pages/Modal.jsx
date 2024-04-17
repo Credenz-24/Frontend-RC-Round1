@@ -1,6 +1,7 @@
 import React from "react";
+import { LineChart } from '@mui/x-charts/LineChart';
 
-export default function Modal({ onClose, onActivate, lifelineInfo }) {
+export default function Modal({isPoll, onClose, onActivate, lifelineInfo,keys,val,activated }) {
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -42,13 +43,49 @@ export default function Modal({ onClose, onActivate, lifelineInfo }) {
                 type="button"
                 onClick={onActivate}
               >
-                Activate Lifeline
+                {activated == "Activated! " ? "Activated!" : "Activate"}
               </button>
+              
             </div>
+            <div >
+            
+            {isPoll ? (
+              
+  <LineChart
+    sx={{
+      '& .axis text': {
+        fill: 'white',
+      },
+      '& .axis path, & .axis line': {
+        stroke: 'white',
+      },
+      '& .MuiChartsAxis-tickContainer': {
+        fill: 'white',
+        stroke: 'white'
+      }
+    }}
+    xAxis={[{ data: keys }]}
+    series={[
+      {
+        data: val,
+        area: true,
+      },
+    ]}
+    width={800}
+    height={350}
+  />
+) : null}
+  </div>
           </div>
         </div>
       </div>
-      <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+      
+      {/* <div className="opacity-25 fixed inset-0 z-40 bg-black">
+      
+      </div> */}
+
+      
+      
     </>
   );
 }

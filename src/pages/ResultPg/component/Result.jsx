@@ -33,7 +33,7 @@ const Home = () => {
   //     return <p className="text-red-500 text-center mt-5">{isError}</p>;
   // }
 
-  const acc = (per.correct_submission/per.incorrect_submission)+per.correct_submission; 
+  const acc = Math.floor(per.correct_submission/(per.incorrect_submission+per.correct_submission)*10000)/100; 
 
   return (
     <>
