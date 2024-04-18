@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const getMyPostData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/result", {
+        const res = await axios.get("https://api.rc.credenz.in/api/result", {
           headers: {
             Authorization: localStorage.getItem("jwt"),
           },

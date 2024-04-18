@@ -23,7 +23,7 @@ function Navbar() {
     }
 
     const handleLogout = () => {
-        axios.get('http://localhost:8000/api/logout', {
+        axios.get('https://api.rc.credenz.in/api/logout', {
                 headers: {
                     'Authorization': `${localStorage.getItem('jwt')}`
                 }

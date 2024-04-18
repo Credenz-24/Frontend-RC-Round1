@@ -66,7 +66,7 @@ const Time = (props) => {
   }
 
   function fetchData() {
-    fetch("http://127.0.0.1:8000/api/lifeline?lifeline=time_freeze", { 
+    fetch("https://api.rc.credenz.in/api/lifeline?lifeline=time_freeze", { 
       headers: {"Authorization": localStorage.getItem('jwt')}
     })
       .then(response => response.json())

@@ -43,7 +43,7 @@ function Lifeline(props) {
   };
 
   const handleActivate = () => {
-    axios.get(`http://127.0.0.1:8000/api/lifeline?lifeline=${selectedEndpoint}`, {
+    axios.get(`https://api.rc.credenz.in/api/lifeline?lifeline=${selectedEndpoint}`, {
       headers: { "Authorization": localStorage.getItem('jwt') }
     })
       .then(response => {

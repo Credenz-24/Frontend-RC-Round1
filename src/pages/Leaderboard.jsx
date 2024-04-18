@@ -271,7 +271,7 @@ function Leaderboard() {
   useEffect(() => {
     const getMyPostData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/result", {
+        const res = await axios.get("https://api.rc.credenz.in/api/result", {
           headers: {
             Authorization: localStorage.getItem("jwt"),
           },
@@ -297,7 +297,7 @@ function Leaderboard() {
           // Check if token is present
           console.log("is token in fetch data", token);
           const response = await axios.get(
-            "http://localhost:8000/api/leaderboard",
+            "https://api.rc.credenz.in/api/leaderboard",
             {
               headers: {
                 Authorization: localStorage.getItem("jwt"),
@@ -308,7 +308,7 @@ function Leaderboard() {
         } else {
           console.log("no token");
           const response = await axios.get(
-            `http://localhost:8000/api/leaderboard?category=${
+            `https://api.rc.credenz.in/api/leaderboard?category=${
               checked ? "SR" : "JR"
             }`
           );

@@ -308,7 +308,7 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     const loginData = { teamname: userId, password };
-    axios.post('http://localhost:8000/api/login', loginData)
+    axios.post('https://api.rc.credenz.in/api/login', loginData)
       .then(res => {
         localStorage.setItem('jwt', res.data.jwt);
         

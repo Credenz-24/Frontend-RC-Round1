@@ -28,7 +28,7 @@ const  QuestionMcq = () => {
 
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/get_question`, {
+    axios.get(`https://api.rc.credenz.in/api/get_question`, {
       headers: {"Authorization": localStorage.getItem('jwt')}
     })
     .then(res => {
@@ -54,7 +54,7 @@ const  QuestionMcq = () => {
     // Check if the value is a valid number
     if (!isNaN(val)) {
       axios.post(
-        'http://127.0.0.1:8000/api/get_question', 
+        'https://api.rc.credenz.in/api/get_question', 
         { answer: val },
         { 
           headers: {"Authorization": localStorage.getItem('jwt')}
