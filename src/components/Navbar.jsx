@@ -52,7 +52,7 @@ function Navbar() {
                         <a href="/instruction" className='px-[20px] py-[10px] text-center'>Instructions</a>
                     </>
                 )}
-                <a href="/leaderboard" className='px-[20px] py-[10px] text-center'>Leaderboards</a>
+                <a href="/leaderboard" className='px-[20px] py-[10px] text-center'>Leaderboard</a>
                 {tokenExists && (
                     <a onClick={handleLogout} className='px-[20px] py-[10px] text-center'>Logout</a>
                 )}

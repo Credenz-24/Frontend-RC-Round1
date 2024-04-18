@@ -272,7 +272,7 @@
 
 
 
-import React, { useState } from "react";
+import React, {useRef, useState } from "react";
 import axios from 'axios';
 import { toast } from "react-toastify";
 
@@ -286,23 +286,46 @@ const Login = () => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
+  const rootElementRef = useRef(null);
+
+  const enterFullScreen = () => {
+    const element = rootElementRef.current;
+    if (element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { // Firefox
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { // Edge
+            element.msRequestFullscreen();
+        }
+    } else {
+        console.error("The element to enter full-screen mode is not found.");
+    }
+};
+
   const handleLogin = (event) => {
     event.preventDefault();
     const loginData = { teamname: userId, password };
     axios.post('http://localhost:8000/api/login', loginData)
       .then(res => {
         localStorage.setItem('jwt', res.data.jwt);
+        
         navigate('/instruction');
+        // enterFullScreen();
         toast.success("Logged In!")
+        
         location.reload();
       })
       .catch(err => {
         console.error(err.response ? err.response.data.detail : err.message);
+        toast.error("Invalid Credentials! ")
       });
   };
 
   return (
-    <div className="login-background">
+    <div ref={rootElementRef} className="login-background">
       <div className="login-layout">
         <div className="logo-container">
           <img src={rclogo} alt="RC Logo" className="rc-logo"/>

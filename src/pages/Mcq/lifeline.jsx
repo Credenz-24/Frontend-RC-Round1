@@ -6,6 +6,7 @@ import aquapointIcon from './aquapoint.jpeg';
 import timefreezeIcon from './time-freeze.png';
 import pollIcon from './poll 1.svg';
 import PollModal from "../PollModal";
+import { toast } from "react-toastify";
 
 function Lifeline(props) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -20,6 +21,7 @@ function Lifeline(props) {
   const [showChart, setShowChart] = useState(false);
   const [lifelineFlag, setLifelineFlag] = useState(1);
   const [activated, setIsActivated] = useState("");
+  const [lifeLineDesc,setLifelineDesc] = useState("");
 
 
 
@@ -33,10 +35,11 @@ function Lifeline(props) {
     }
   }, [props.lifeline1, props.lifeline2, props.lifeline3,props.lifelineflag]);
 
-  const handleLifelineClick = (endpoint, info) => {
+  const handleLifelineClick = (endpoint, info,lifeLineDesc) => {
     setModalOpen(true);
     setSelectedEndpoint(endpoint);
     setLifelineInfo(info);
+    setLifelineDesc(lifeLineDesc);
   };
 
   const handleActivate = () => {
@@ -58,6 +61,8 @@ function Lifeline(props) {
           setShowChart(true);
           
           setIsActivated("Activated! ")
+
+          toast.success("Activated! ")
           // window.location.reload();
         } else {
           window.location.reload();
@@ -65,6 +70,10 @@ function Lifeline(props) {
       })
       .catch(error => {
         console.error("Error fetching lifeline data:", error);
+        // if(selectedEndpoint === "aqua_point"){
+          toast.error("Cannot Activate !")
+        // }
+
       });
   };
 
@@ -82,27 +91,27 @@ function Lifeline(props) {
     className={`text-white py-2 px-4 pl-2 mt-2 mb-2 ml-12 mr-12  ${
       lifeline1 ? "bg-red-200" : "bg-green-200"
     } rounded-lg focus:outline-none hover:bg-opacity-80`}
-    onClick={() => handleLifelineClick("aqua_point", "Lifeline 1")}
+    onClick={() => handleLifelineClick("aqua_point", "Lifeline 1","Correct answers earn +8 marks, while incorrect answers result in -4 marks. This lifeline can't be activated after the first response out of two.")}
     disabled={lifeline1}
   >
     <img src={aquapointIcon} alt="Aquapoint" className="w-8 h-8 inline-block mr-2" />
-    <span className={lifeline1 ? "text-red-600" : "text-green-800"}>Lifeline 1</span>
+    <span className={lifeline1 ? "text-red-600" : "text-green-800"}>Aqua Point</span>
   </button>
   <button
     className={`text-white py-2 px-4 pl-2 mt-2 mb-2 ml-12 mr-12 ${
       lifeline2 ? "bg-red-200" : "bg-green-200"
     } rounded-lg focus:outline-none hover:bg-opacity-80`}
-    onClick={() => handleLifelineClick("time_freeze", "Lifeline 2")}
+    onClick={() => handleLifelineClick("time_freeze", "Lifeline 2", "Time slows down for a minute. Every 10 seconds, 1 second is reduced from the timer. This lifeline remains active for only a minute.")}
     disabled={lifeline2}
   >
     <img src={timefreezeIcon} alt="Time Freeze" className="w-8 h-8 inline-block mr-2" />
-    <span className={lifeline2 ? "text-red-600" : "text-green-800"}>Lifeline 2</span>
+    <span className={lifeline2 ? "text-red-600" : "text-green-800"}>Time Stretch</span>
   </button>
   <button
     className={`text-white py-2 px-4 pl-2 mt-2 mb-2 ml-12 mr-12  ${
       lifelineFlag === 4 ? "bg-green-200" : lifeline3 ? "bg-red-200" : "bg-green-200"
     } rounded-lg focus:outline-none hover:bg-opacity-80`}
-    onClick={() => handleLifelineClick("poll", "Lifeline 3")}
+    onClick={() => handleLifelineClick("poll", "Lifeline 3", "Reveals the responses of other participants for the same question. It can't be activated after the first response. ")}
     disabled={lifelineFlag === 4 ? false : lifeline3}
   >
     <img src={pollIcon} alt="Poll" className="w-8 h-8 inline-block mr-2" />
@@ -111,7 +120,7 @@ function Lifeline(props) {
         lifelineFlag === 4 ? "text-green-800" : lifeline3 ? "text-red-600" : "text-green-800"
       }
     >
-      Lifeline 3
+      OCEANIC OPINIONS
     </span>
   </button>
       </div>
@@ -146,7 +155,7 @@ function Lifeline(props) {
 
 {/* {      console.log("is pole in lifeline ",isPoll)} */}
       {modalOpen && (
-        <Modal onClose={() => setModalOpen(false)} onActivate={() => handleActivate(selectedEndpoint)} lifelineInfo={lifelineInfo} isPoll={isPoll} keys={keys} val={val} activated={activated} />
+        <Modal onClose={() => setModalOpen(false)} onActivate={() => handleActivate(selectedEndpoint)} lifelineInfo={lifelineInfo} isPoll={isPoll} keys={keys} val={val} activated={activated} lifeLineDesc={lifeLineDesc} />
       )}
 {/* 
       {is <PollModal
@@ -162,3 +171,5 @@ function Lifeline(props) {
 }
 
 export default Lifeline;
+
+

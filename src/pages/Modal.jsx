@@ -1,7 +1,7 @@
 import React from "react";
 import { LineChart } from '@mui/x-charts/LineChart';
 
-export default function Modal({isPoll, onClose, onActivate, lifelineInfo,keys,val,activated }) {
+export default function Modal({isPoll, onClose, onActivate, lifelineInfo,keys,val,activated,lifeLineDesc }) {
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -25,7 +25,7 @@ export default function Modal({isPoll, onClose, onActivate, lifelineInfo,keys,va
             {/* Body */}
             <div className="relative p-6 flex-auto">
               <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                Selected Lifeline: <span className="text-white font-bold">{lifelineInfo}</span>
+                <span className="text-white font-bold">{lifeLineDesc}</span>
               </p>
               {/* Additional modal content can go here */}
             </div>
@@ -42,8 +42,10 @@ export default function Modal({isPoll, onClose, onActivate, lifelineInfo,keys,va
                 className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
                 onClick={onActivate}
+                disabled={activated === "Activated! "}
               >
                 {activated == "Activated! " ? "Activated!" : "Activate"}
+                
               </button>
               
             </div>

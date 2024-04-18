@@ -73,6 +73,7 @@ const  QuestionMcq = () => {
       })
       .catch(error => {
         console.error('Error:', error);
+        toast.error("Cannot Submit, Please try again!")
       });
     } else {
       // Display an error message or handle the invalid input accordingly
@@ -90,6 +91,7 @@ const  QuestionMcq = () => {
     <div className="[grid-area:2_/_1_/_5_/_4] bg-[#0B121B] text-white border-2 border-[#00B0B0] text-center rounded-lg mr-20 overflow-auto" style={{ height: "100%", alignSelf: "flex-start" }}>      
     <div className=" text-left text-xl pt-2 pl-4">
         <p>{question}</p>
+        {/* <p>text</p> */}
       </div>
     </div>
     {
@@ -112,7 +114,7 @@ const  QuestionMcq = () => {
         type="number"
         id="response 1"
         className="appearance-none bg-[#0B121B] text-white border text-sm rounded-lg block w-full p-2.5"
-        placeholder={lifelineFlag === 2 ? "Cannot Repond" : "Response 1"}
+        placeholder={lifelineFlag === 2 ? "Please enter in Reponse 2" : "Response 1"}
         disabled
         value={lifelineFlag != 2 ? prevans : null}
       />
@@ -151,7 +153,7 @@ const  QuestionMcq = () => {
           <p>+4</p>
         </div>
         <div className="[grid-area:2_/_4_/_3_/_5] text-white text-center flex items-center justify-center">
-          <p>-2</p>
+          <p>-1</p>
         </div> 
         </>):
         (lifelineFlag==2 ? (<>
@@ -164,7 +166,7 @@ const  QuestionMcq = () => {
         </>) :
         (<>
           <div className="[grid-area:2_/_3_/_3_/_4] text-white text-center flex items-center justify-center">
-          <p>+2</p>
+          <p>+3</p>
         </div>
         <div className="[grid-area:2_/_4_/_3_/_5] text-white text-center flex items-center justify-center">
           <p>-1</p>

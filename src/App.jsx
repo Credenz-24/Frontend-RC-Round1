@@ -10,6 +10,7 @@ import OurTeam from './pages/OurTeam';
 import Navbar from './components/Navbar';
 import InstructionMain from './pages/InstrcutionPage/InstructionMain';
 import TabSwitchDetector from './pages/TabSwitchDetector';
+import DisableClipboard from './components/DisableBack';
 
 // const router = createBrowserRouter(
 //   createRoutesFromElements(
@@ -63,8 +64,9 @@ function App() {
   return (
     
     <>
-        
+      
       <div className='main'>
+      <DisableClipboard >
     <Navbar/>
    <Routes>
       <Route path="/" element={<Login />} />
@@ -81,7 +83,8 @@ function App() {
 
       
       </Routes>
-      <TabSwitchDetector />
+      {/* <TabSwitchDetector /> */}
+      </DisableClipboard >
       </div>
 
       

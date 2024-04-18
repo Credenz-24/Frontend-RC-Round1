@@ -57,7 +57,7 @@ const LifeLine = (props) => {
                     <p>{title}</p>
                 </div>
                 <div className="mt-2.5 flex justify-center items-center px-[3vw] font-red-hat-display">
-            It removes whitespace from the beginning and end of a string
+            {content} 
           </div>
                 </div>
 

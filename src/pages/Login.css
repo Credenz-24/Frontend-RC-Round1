@@ -93,9 +93,9 @@
 }
 
 /* Add hover effect on placeholder */
-.login-input:focus::placeholder {
-  transform: translateY(-20px); /* Move placeholder up */
-}
+/* .login-input:focus::placeholder { */
+  /* transform: translateY(-10px); */
+/* } */
 
 /* Add hover effect on border-bottom */
 .login-input:focus {
