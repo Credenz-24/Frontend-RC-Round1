@@ -360,7 +360,7 @@ const InstructionMain = (props) => {
 
   return (
     <>
-      <div className="container h-[86.3vh] w-full bg-red-60 z-[999] flex justify-center items-center mx-auto ">
+      <div className="container w-full bg-red-60 z-[999] flex justify-center items-center mx-auto h-[91.5vh]">
         <div className="content-container w-[90%] bg-blue-90 h-[100%] flexf flex-col justify-center items-center ">
           {/* INSTRUCTIONS */}
           {currentStep === 0 ? (
@@ -370,7 +370,7 @@ const InstructionMain = (props) => {
                   INSTRUCTIONS
                 </h1>
               </div>
-              <div className="instructions h-[70%] w-full bg-[#52E6E8] rounded-xl px-[5vw] flex flex-col justify-center items-center gap-[2vw] my-2">
+              <div className="instructions h-[70%] w-full bg-[#52E6E8] rounded-xl md:px-[5vw] px-1 flex flex-col justify-center items-center gap-[2vw] my-2">
                 {InstructionArray.slice(0,3).map((item) => {
                   return (
                     <>
@@ -423,7 +423,7 @@ const InstructionMain = (props) => {
           ) : null}
           {/* LIFELINES */}
           {currentStep == 2 ? (
-            <div className="h-[100%] w-full relative ">
+            <div className="h-[91.5] w-full relative ">
               <div className="title h-[12%] w-full bg-green-90 flex justify-center items-center ">
                 <h1 className="text-[40px] text-white font-red-hat-display">
                   LIFELINES
@@ -434,17 +434,17 @@ const InstructionMain = (props) => {
                   {LifelineArray.map((items) => {
                     return (
                       <>
-                        <div className="instruct1 h-[100px] w-full bg-yellow-20 flex justify-center items-center text-[#038870]">
+                        <div className="instruct1 md:h-[100px] !h-[auto] w-full bg-yellow-20 flex justify-center items-center text-[#038870]">
                 <div className="nums w-[10%] h-full bg-blue-10 flex justify-center items-center">
                 <div className="my-auto text-7xl font-bold text-center max-md:text-4xl">
                 <img src={items.img} alt=""  className=" h-[80px] w-[80px]"/>
           </div>
                 </div>
                 <div className="flex flex-col grow shrink-0 mt-5 basis-0 w-fit max-md:max-w-full">
-                <div className="description w-[80%] h-[90%] flex justify-center items-center px-[3vw] font-red-hat-display text-xl">
+                <div className="description w-[80%] h-[90%] flex justify-center items-center md:px-[3vw] mx-2 font-red-hat-display text-sm md:text-xl">
                     <p>{items.title}</p>
                 </div>
-                <div className="mt-2.5 flex justify-center items-center px-[3vw] font-red-hat-display">
+                <div className="mt-2.5 flex justify-center items-center px-[3vw] font-red-hat-display ext-sm md:text-xl">
             {items.content} 
           </div>
                 </div>

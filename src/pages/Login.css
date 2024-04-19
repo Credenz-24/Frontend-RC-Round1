@@ -129,3 +129,31 @@
     margin-bottom: 20px; /* Decrease spacing between input fields */
   }
 }
+
+/* Radio Buttons Container */
+.radio-buttons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Radio Button Labels */
+.radio-buttons label {
+  color: #fff; /* Adjust the color to fit your design */
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom Radio Buttons */
+.radio-buttons input[type="radio"] {
+  accent-color: #19B4B6; /* This will change the color of the radio button */
+  margin-right: 8px;
+}
+
+/* Styling the labels to be more aligned with the overall theme */
+.radio-buttons label:hover {
+  cursor: pointer;
+}
+

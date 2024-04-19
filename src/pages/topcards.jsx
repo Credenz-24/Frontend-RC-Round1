@@ -81,14 +81,14 @@ const TopCards = ({ name, rank, teamScore, accuracy, img }) => {
             />
           </div>
           <div className="username w-[70%] sm:w-[75%] lg:w-[65%] h-full bg-red-70 flex justify-start items-center px-[20px]">
-            <h1 className="text text-[30px] sm:text-[15px] lg:text-[25px] text-white">
+            <h1 className="text text-[30px] sm:text-[25px] lg:text-[25px] text-white">
               {name}
             </h1>
           </div>
         </div>
         <div className="stats h-[50%] w-full bg-blue-30 flex justify-center items-center ">
           <div className="text questions-solved h-full w-[60%] sm:w-[55%] lg:w-[65%] bg-green-90 flex flex-col justify-center items-center ">
-            <h5 className="text text-[20px] sm:text-[10px] lg:text-[22px] text-white">
+            <h5 className="text text-[20px] sm:text-[20px] lg:text-[22px] text-indigo-500">
               Team Score
             </h5>
             <h1 className="text text-[30px] sm:text-[15px] lg:text-[25px] text-white">
@@ -96,7 +96,7 @@ const TopCards = ({ name, rank, teamScore, accuracy, img }) => {
             </h1>
           </div>
           <div className="accuracy h-full w-[40%] sm:w-[45%] lg:w-[35%] bg-cyan- flex flex-col justify-center items-center">
-            <h5 className="text-[20px] sm:text-[10px] lg:text-[22px] text-white">
+            <h5 className="text-[20px] sm:text-[20px] lg:text-[22px] text-indigo-500">
               Accuracy
             </h5>
             <h1 className="text-[30px] sm:text-[15px] lg:text-[25px] text-white">

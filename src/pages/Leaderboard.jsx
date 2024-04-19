@@ -261,6 +261,7 @@ function Leaderboard() {
   const [entriesPerPage] = useState(3); // Change this value as needed
   const img_src = [gold, silver, bronze];
   const [token, setToken] = useState(false);
+  // let token;
 
   const [checked, setChecked] = useState(false);
 
@@ -272,11 +273,13 @@ function Leaderboard() {
     const getMyPostData = async () => {
       try {
         const res = await axios.get("https://api.rc.credenz.in/api/result", {
+          // const res = await axios.get("https://b56b-106-193-237-218.ngrok-free.app/api/result", {
+          
           headers: {
             Authorization: localStorage.getItem("jwt"),
           },
         });
-        console.log("Response", res);
+        // console.log("Response", res);
         setMyData(res.data);
       } catch (error) {
         // setIsError(error.message);
@@ -290,6 +293,8 @@ function Leaderboard() {
   useEffect(() => {
     if (localStorage.getItem("jwt")) {
       setToken(true);
+    }else{
+      setToken(false);
     }
     const fetchData = async () => {
       try {
@@ -298,20 +303,24 @@ function Leaderboard() {
           console.log("is token in fetch data", token);
           const response = await axios.get(
             "https://api.rc.credenz.in/api/leaderboard",
+            // "https://b56b-106-193-237-218.ngrok-free.app/api/leaderboard",
             {
               headers: {
                 Authorization: localStorage.getItem("jwt"),
               },
             }
           );
+          console.log(response)
           setLeaderboardData(response.data);
         } else {
           console.log("no token");
           const response = await axios.get(
             `https://api.rc.credenz.in/api/leaderboard?category=${
+              // `https://b56b-106-193-237-218.ngrok-free.app/api/leaderboard?category=${
               checked ? "SR" : "JR"
             }`
           );
+          // console.log(response)
           setLeaderboardData(response.data);
         }
       } catch (error) {
@@ -431,10 +440,10 @@ function Leaderboard() {
               />
               <h1 className="text-white">Senior</h1>
             </div> : null
-}
+            }
 
             <ul>
-              <li className="flex justify-between text-center items-center p-4">
+              <li className="flex justify-between text-center items-center p-4 bg-blue-300">
                 <span className="w-1/4 font-semibold text-center text-indigo-600">
                   Rank
                 </span>
@@ -487,7 +496,7 @@ function Leaderboard() {
             )
           )}
         </div>
-        {console.log("isToken", token)}
+        {/* {console.log("isToken", token)} */}
         {/* <h1 className="text-white ml-auto mr-[500px] pb-40">Junior</h1> */}
       </div>
     </>

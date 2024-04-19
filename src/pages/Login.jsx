@@ -272,55 +272,41 @@
 
 
 
-import React, {useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from 'axios';
 import { toast } from "react-toastify";
-
 import { useNavigate } from 'react-router-dom';
-import bgimage from '../images/bgimage.png'; // ensure the path is correct
-import rclogo from '../images/rclogo 3.png'; // ensure the path is correct
-import "./Login.css";
+import bgimage from '../images/bgimage.png'; // Ensure the path is correct
+import rclogo from '../images/rclogo.png'; // Ensure the path is correct and update file name if needed
+import "./Login.css"; // Ensure CSS file is correctly linked
 
 const Login = () => {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const [isTeam, setIsTeam] = useState(true);
 
   const rootElementRef = useRef(null);
 
-  const enterFullScreen = () => {
-    const element = rootElementRef.current;
-    if (element) {
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) { // Firefox
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-            element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) { // Edge
-            element.msRequestFullscreen();
-        }
-    } else {
-        console.error("The element to enter full-screen mode is not found.");
-    }
-};
-
   const handleLogin = (event) => {
     event.preventDefault();
-    const loginData = { teamname: userId, password };
+    const loginData = {
+      teamname: userId,
+      password:password,
+      is_team:isTeam
+    };
     axios.post('https://api.rc.credenz.in/api/login', loginData)
+    // axios.post('https://b56b-106-193-237-218.ngrok-free.app/api/login', loginData)
+    
       .then(res => {
         localStorage.setItem('jwt', res.data.jwt);
-        
         navigate('/instruction');
-        // enterFullScreen();
-        toast.success("Logged In!")
-        
-        location.reload();
+        toast.success("Logged In!");
+        window.location.reload(); // Depending on app design, you might not need to reload the page.
       })
       .catch(err => {
         console.error(err.response ? err.response.data.detail : err.message);
-        toast.error("Invalid Credentials! ")
+        toast.error(err);
       });
   };
 
@@ -331,7 +317,7 @@ const Login = () => {
           <img src={rclogo} alt="RC Logo" className="rc-logo"/>
         </div>
         <div className="login-container">
-                    <form onSubmit={handleLogin} className="login-form">
+          <form onSubmit={handleLogin} className="login-form">
             <h1 className="login-title">Login</h1>
             <input
               id="username"
@@ -349,7 +335,28 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="login-input"
             />
-            <button onClick={handleLogin} type="submit" className="login-button" style={{ backgroundColor: '#19B4B6' }}>Login</button>          </form>
+            <div className="radio-buttons">
+              <label>
+                <input
+                  type="radio"
+                  value="team"
+                  checked={isTeam === true}
+                  onChange={() => setIsTeam(true)}
+                />
+                Team
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="individual"
+                  checked={isTeam === false}
+                  onChange={() => setIsTeam(false)}
+                />
+                Individual
+              </label>
+            </div>
+            <button type="submit" className="login-button" style={{ backgroundColor: '#19B4B6' }}>Login</button>
+          </form>
         </div>
       </div>
     </div>
@@ -357,5 +364,9 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
 
 
