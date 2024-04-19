@@ -96,7 +96,7 @@ const  QuestionMcq = () => {
     <div className="[grid-area:1_/_1_/_2_/_2] bg-[#0B121B] h-12 text-white border-2 border-[#00B0B0] text-center flex items-center justify-center rounded-lg gap-y-0">
       <p>Question {queno}</p>
     </div>
-    <div className="[grid-area:2_/_1_/_4_/_4] text-xl pt-2 pl-4 md:[grid-area:2_/_1_/_5_/_4] bg-[#0B121B] text-white border-2 border-[#00B0B0] text-left rounded-lg md:mr-20 overflow-auto mr-20 ml-auto" style={{ height: "100%", alignSelf: "flex-start" }}>      
+    <div className="[grid-area:2_/_1_/_4_/_4] text-xl pt-2 pl-4 md:[grid-area:2_/_1_/_5_/_4] bg-[#0B121B] text-white border-2 border-[#00B0B0] text-left rounded-lg md:mr-20 overflow-auto mr-20" style={{ height: "100%", alignSelf: "flex-start" }}>      
       <p>{question}</p>
       {/* <p>text</p> */}
     </div>
@@ -178,7 +178,7 @@ const  QuestionMcq = () => {
     <div className="[grid-area:8_/_1_/_9_/_4] md:[grid-area:4_/_4_/_7_/_5] mr-20 md:mr-10">
       <Lifeline lifeline1={lifeline1} lifeline2={lifeline2} lifeline3={lifeline3} lifelineFlag={lifelineFlag}/>
     </div>      
-    <div className="[grid-area:6_/_1_/_7_/_4] md:[grid-area:6_/_1_/_7_/_4] w-0 mt:10 mb-10 flex ml-10 min-h-10">
+    <div className="[grid-area:6_/_1_/_7_/_4] md:[grid-area:6_/_1_/_7_/_4] w-0 mt:10 mb-10 flex ml-10 min-h-10 md:ml-auto md:mr-auto">
       <button
         type="submit"
         className="bg-[#00B0B0]  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
