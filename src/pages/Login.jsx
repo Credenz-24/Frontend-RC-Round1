@@ -306,7 +306,8 @@ const Login = () => {
       })
       .catch(err => {
         console.error(err.response ? err.response.data.detail : err.message);
-        toast.error(err);
+        console.log(err.response)
+        // toast.error(err.response.);
       });
   };
 

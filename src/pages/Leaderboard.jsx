@@ -303,6 +303,7 @@ function Leaderboard() {
           console.log("is token in fetch data", token);
           const response = await axios.get(
             "https://api.rc.credenz.in/api/leaderboard",
+            // https://rc24.netlify.app/leaderboard
             // "https://b56b-106-193-237-218.ngrok-free.app/api/leaderboard",
             {
               headers: {

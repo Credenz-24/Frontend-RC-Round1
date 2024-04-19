@@ -370,7 +370,7 @@ const InstructionMain = (props) => {
                   INSTRUCTIONS
                 </h1>
               </div>
-              <div className="instructions h-[70%] w-full bg-[#52E6E8] rounded-xl md:px-[5vw] px-1 flex flex-col justify-center items-center gap-[2vw] my-2">
+              <div className="instructions h-[70%] w-full bg-[#52E6E8] rounded-xl md:px-[5vw] px-1 flex flex-col justify-center items-center gap-[2vw] my-4">
                 {InstructionArray.slice(0,3).map((item) => {
                   return (
                     <>
