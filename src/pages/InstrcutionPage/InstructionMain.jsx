@@ -282,7 +282,7 @@ const InstructionMain = (props) => {
       title: "Aqua Bonus",
       img: "../aqua point 1.jpeg",
       
-      content: "Correct answers earn +8 marks, while incorrect answers result in -4 marks. This lifeline can't be activated after the first response out of two.",
+      content: "Correct answer earns +8 marks, while incorrect answer would result in -4 marks. This lifeline can't be activated after you have attempted first response out of two.",
     },
     {
       id: 2,
@@ -295,7 +295,7 @@ const InstructionMain = (props) => {
       id: 3,
       title: "Oceanic Opinions",
       img: "../poll 1.svg",
-      content: "Reveals the responses of other participants for the same question. It can't be activated after the first response. ",
+      content: "Reveals the responses of other participants for the same question. It can't be activated after you have attempted the first response. ",
     },
   ];
 
@@ -332,7 +332,7 @@ const InstructionMain = (props) => {
     },
     {
       num: 2,
-      desc: "The answers are strictly in the form of integers.",
+      desc: "The answers must be strictly in the form of integers. All questions must be solved in sequence.",
     },
     {
       num: 3,

@@ -418,7 +418,7 @@ function Leaderboard() {
                       paddingRight: 20, // Adjust padding as needed
                     }}
                   >
-                    Juniors
+                    
                   </div>
                 }
                 checkedIcon={
@@ -434,7 +434,7 @@ function Leaderboard() {
                       paddingLeft: 20, // Adjust padding as needed
                     }}
                   >
-                    Seniors
+                    
                   </div>
                 }
                 className="align-center justify-center ml-auto mr-auto"

@@ -305,9 +305,10 @@ const Login = () => {
         window.location.reload(); // Depending on app design, you might not need to reload the page.
       })
       .catch(err => {
-        console.error(err.response ? err.response.data.detail : err.message);
-        console.log(err.response)
-        // toast.error(err.response.);
+        const errorMessage = err.response ? err.response.data.detail : err.message;
+        console.error(errorMessage);  // Log the error message to the console
+        // console.log(err.response)
+        toast.error(errorMessage);
       });
   };
 
