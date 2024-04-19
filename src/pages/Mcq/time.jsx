@@ -45,8 +45,11 @@ const Time = (props) => {
   function updateTimer() {
     setTime(prevTime => {
       let { hrs, min, sec } = prevTime;
-
-      if (sec > 0) {
+      if (sec==1 && hrs == 0 && min == 0){
+        navigate('/result');
+        toast.info("Time Over!")
+      }
+      else if (sec > 0) {
         sec--;
       } else if (min > 0) {
         min--;

@@ -46,6 +46,10 @@ const  QuestionMcq = () => {
       setLF1(res.data['lifeline1']);
       setLF2(res.data['lifeline2']);
       setLF3(res.data['lifeline3']);
+      if(res.data['hours']==0 && res.data['minutes']==0 && res.data['seconds']==0){
+        navigate('/result');
+        toast.info("Time Over!")
+      }
     })
     .catch(error => {
       navigate('/')
