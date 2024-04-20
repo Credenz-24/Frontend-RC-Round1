@@ -299,6 +299,7 @@ const Login = () => {
     // axios.post('https://b56b-106-193-237-218.ngrok-free.app/api/login', loginData)
     
       .then(res => {
+        // console.log("In then")
         localStorage.setItem('jwt', res.data.jwt);
         navigate('/instruction');
         toast.success("Logged In!");
@@ -306,6 +307,8 @@ const Login = () => {
       })
       .catch(err => {
         // console.log("In error")
+        // console.log("response",res)
+        // console.log("error",err)
         const errorMessage = err.response ? err.response.data.detail : err.message;
         console.error(errorMessage);  // Log the error message to the console
         // console.log(err.response)
