@@ -310,7 +310,7 @@ const Login = () => {
         console.error(errorMessage);  // Log the error message to the console
         // console.log(err.response)
         if(errorMessage){toast.error(errorMessage);}
-        else{toast.error("Invalid Credentials24")}
+        else{toast.error("Invalid Credentials!")}
         
       });
   };
