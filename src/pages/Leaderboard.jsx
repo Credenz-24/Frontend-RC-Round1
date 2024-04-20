@@ -455,7 +455,7 @@ function Leaderboard() {
                   Marks
                 </span>
                 <span className="w-1/4 font-semibold text-center text-indigo-600">
-                  Correct Questions
+                  Correct Asnwers
                 </span>
               </li>
               {currentEntries.map((entry, index) => (
@@ -470,7 +470,7 @@ function Leaderboard() {
                   <span className="w-1/4 text-white">{entry.team_name}</span>
                   <span className="w-1/4 text-white">{entry.score} pts</span>
                   <span className="w-1/4 text-white">
-                    Q{entry.correct_count}
+                    {entry.correct_count}
                   </span>
                 </li>
               ))}
