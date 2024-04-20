@@ -81,7 +81,7 @@ const TopCards = ({ name, rank, teamScore, accuracy, img }) => {
             />
           </div>
           <div className="username w-[70%] sm:w-[75%] lg:w-[65%] h-full bg-red-70 flex justify-start items-center px-[20px]">
-            <h1 className="text text-[30px] sm:text-[25px] lg:text-[25px] text-white">
+            <h1 className="text text-[20px] sm:text-[20px] lg:text-[20px] text-white">
               {name}
             </h1>
           </div>

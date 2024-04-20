@@ -301,20 +301,20 @@ function Leaderboard() {
     getMyPostData();
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem("jwt")) {
-      setToken(true);
-    } else {
-      setToken(false);
-    }
-  }, [localStorage.getItem("jwt")]);
+  // useEffect(() => {
+  //   if (localStorage.getItem("jwt")) {
+  //     setToken(true);
+  //   } else {
+  //     setToken(false);
+  //   }
+  // }, [localStorage.getItem("jwt")]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (token) {
+        // if (token) {
           const response = await axios.get(
-            "https://api.rc.credenz.in/api/leaderboard",
+            `https://api.rc.credenz.in/api/leaderboard?category=${checked ? 'SR' : 'JR'}`,
             {
               headers: {
                 Authorization: localStorage.getItem("jwt"),
@@ -322,21 +322,19 @@ function Leaderboard() {
             }
           );
           setLeaderboardData(response.data);
-        } else {
-          const response = await axios.get(
-            `https://api.rc.credenz.in/api/leaderboard?category=${
-              checked ? "SR" : "JR"
-            }`
-          );
-          setLeaderboardData(response.data);
-        }
+        // } else {
+        //   const response = await axios.get(
+        //     `https://api.rc.credenz.in/api/leaderboard?category=${checked ? 'JR' : 'SR'}`
+        //   );
+        //   setLeaderboardData(response.data);
+        // }
       } catch (error) {
         console.error("Error fetching leaderboard data:", error);
       }
     };
 
     fetchData();
-  }, [checked, token]);
+  }, [checked,leaderboardData]);
 
   // Pagination logic
   const indexOfLastEntry = currentPage * entriesPerPage;
@@ -397,6 +395,7 @@ function Leaderboard() {
             </h2>
             <div className="flex justify-between p-4">
               <h1 className="text-white">Junior</h1>
+
               <Switch
                 onChange={handleChange}
                 checked={checked}
