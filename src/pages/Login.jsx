@@ -305,10 +305,13 @@ const Login = () => {
         window.location.reload(); // Depending on app design, you might not need to reload the page.
       })
       .catch(err => {
+        // console.log("In error")
         const errorMessage = err.response ? err.response.data.detail : err.message;
         console.error(errorMessage);  // Log the error message to the console
         // console.log(err.response)
-        toast.error(errorMessage);
+        if(errorMessage){toast.error(errorMessage);}
+        else{toast.error("Invalid Credentials24")}
+        
       });
   };
 

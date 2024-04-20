@@ -26,6 +26,8 @@ const  QuestionMcq = () => {
   const [lifeline2,setLF2] = useState(false);
   const [lifeline3,setLF3] = useState(false);
 
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+
 
   useEffect(() => {
     axios.get(`https://api.rc.credenz.in/api/get_question`, {
@@ -57,7 +59,8 @@ const  QuestionMcq = () => {
   }, []);
 
   const submitResponse = () => {
-    // Check if the value is a valid number
+    
+    setSubmitDisabled(true);
     if (!isNaN(val)) {
       axios.post(
         'https://api.rc.credenz.in/api/get_question', 
@@ -75,6 +78,7 @@ const  QuestionMcq = () => {
           console.log("inside current question go to result")
           navigate('/result')
         }
+        toast.info("Please Wait your answer is getting submitted!")
         location.reload();
         console.log(response)
         
@@ -82,10 +86,12 @@ const  QuestionMcq = () => {
       .catch(error => {
         console.error('Error:', error);
         toast.error("Cannot Submit, Please try again!")
+        setSubmitDisabled(false);
       });
     } else {
       // Display an error message or handle the invalid input accordingly
       toast("Invalid input: Please enter a valid number");
+      setSubmitDisabled(false);
     }
   }
   
@@ -183,6 +189,7 @@ const  QuestionMcq = () => {
         type="submit"
         className="bg-[#00B0B0]  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
         onClick={submitResponse}
+        disabled={submitDisabled}
       >
         Submit
       </button>
